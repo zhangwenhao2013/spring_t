@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class ConanAspectWithArgs {
 
-    @Pointcut(value = "execution(* com.conan.springt.beans.Bizlogic.save(java.lang.String)) && args(ss) ")
+    @Pointcut(value = "execution(* com.conan.springt.beans.Bizlogic.save(java.lang.String)) && args(ss) "
+    ,argNames = "ss")
     public void executePointcut(String ss) {
 
     }
@@ -59,7 +60,7 @@ public class ConanAspectWithArgs {
         System.out.println(" executeSaveAfterThrowing " + ex.getStackTrace());
     }
 
-    @Around(value = "execution(* com.conan.springt.beans.Bizlogic.save(java.lang.String))) && args(objects)")
+    @Around(value = "execution(* com.conan.springt.beans.Bizlogic.save(java.lang.String)))")
     public Object executeSaveAround(ProceedingJoinPoint proceedingJoinPoint) {
 
         Object proceed = null;
