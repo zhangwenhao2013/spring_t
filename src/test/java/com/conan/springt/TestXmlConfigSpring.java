@@ -1,7 +1,6 @@
 package com.conan.springt;
 
 
-import com.conan.springt.beans.BizLogicImpl;
 import com.conan.springt.beans.Bizlogic;
 import com.conan.springt.beans2.Humen;
 import org.junit.Test;
@@ -17,7 +16,7 @@ public class TestXmlConfigSpring extends BaseJunit {
     @Test
     public void testBizlogicImpl() {
 
-        BizLogicImpl bizlogicimpl = (BizLogicImpl) context.getBean("bizlogicimpl");
+        Bizlogic bizlogicimpl = (Bizlogic) context.getBean("bizlogicimpl");
         bizlogicimpl.save("abcdefg");
 
     }
@@ -29,4 +28,20 @@ public class TestXmlConfigSpring extends BaseJunit {
         humen.say();
 
     }
+
+    @Test
+    public void testBizlogicImplExecuteBefore() {
+        /**
+         * 如果不配置proxy-target-class="true"的话 会使用jdk的动态代理方式;
+         *
+         * 如果设置了的话  ,会使用CGLIB代理方式; 可以直接获取接口的实现类;
+         *
+         * <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+         *
+         */
+        Bizlogic bizlogicimpl = (Bizlogic) context.getBean("bizlogicimpl");
+        bizlogicimpl.save();
+    }
+
+
 }
