@@ -35,6 +35,8 @@ public class TestXmlConfigSpring extends BaseJunit {
          * 如果不配置proxy-target-class="true"的话 会使用jdk的动态代理方式;
          *
          * 如果设置了的话  ,会使用CGLIB代理方式; 可以直接获取接口的实现类;
+         * 可以直接使用下面的方式获取容器类中的BizlogicImpl;
+         * BizlogicImpl bizlogicimpl = (BizlogicImpl) context.getBean("bizlogicimpl");
          *
          * <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
          *
