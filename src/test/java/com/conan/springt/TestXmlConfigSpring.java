@@ -43,5 +43,25 @@ public class TestXmlConfigSpring extends BaseJunit {
         bizlogicimpl.save();
     }
 
+    @Test
+    public void testBizlogicSaveWithParamsAfterReturning() {
+        Bizlogic bizlogicimpl = (Bizlogic) context.getBean("bizlogicimpl");
+        bizlogicimpl.save("xyzasdf");
+    }
+
+
+    @Test
+    public void testBizlogicSaveWithParamsAfterThrowing() {
+        Bizlogic bizlogicimpl = (Bizlogic) context.getBean("bizlogicimpl");
+        bizlogicimpl.save(null);
+    }
+
+
+    @Test
+    public void testBizlogicSaveWithParamsAround() {
+        Bizlogic bizlogicimpl = (Bizlogic) context.getBean("bizlogicimpl");
+        bizlogicimpl.save("qwertyui");
+    }
+
 
 }
