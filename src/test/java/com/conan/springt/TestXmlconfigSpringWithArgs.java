@@ -2,6 +2,7 @@ package com.conan.springt;
 
 
 import com.conan.springt.beans.Bizlogic;
+import com.conan.springt.introductioninterface.UsageTracked;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -41,6 +42,22 @@ public class TestXmlconfigSpringWithArgs extends BaseJunit {
 
         Bizlogic bizlogicimpl = (Bizlogic) context.getBean("bizlogicimpl");
         bizlogicimpl.save("abcdefg");
+
+    }
+
+
+    /**
+     * Introduction 实现增强某个类的功能
+     */
+    @Test
+    public void testExecuteBizlogicIntroduction() {
+//        Bizlogic bizlogicimpl = (Bizlogic) context.getBean("bizlogicimpl");
+//        bizlogicimpl.save("abcdefg");
+//        UsageTracked  usageTracked = (UsageTracked) bizlogicimpl;
+//        usageTracked.usageTracked("abcdefg");
+
+        UsageTracked usageTracked = (UsageTracked) context.getBean("bizlogicimpl");
+        usageTracked.usageTracked("abcdefg");
 
     }
 

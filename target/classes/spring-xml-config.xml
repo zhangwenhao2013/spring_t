@@ -9,6 +9,7 @@
     <context:component-scan base-package="com.conan.springt.beans"></context:component-scan>
     <context:component-scan base-package="com.conan.springt.beans2"></context:component-scan>
     <context:component-scan base-package="com.conan.springt.aop"></context:component-scan>
+    <context:component-scan base-package="com.conan.springt.introductioninterface"></context:component-scan>
 
 
     <aop:aspectj-autoproxy ></aop:aspectj-autoproxy>

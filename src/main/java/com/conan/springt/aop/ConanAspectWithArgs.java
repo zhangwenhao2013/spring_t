@@ -1,6 +1,8 @@
 package com.conan.springt.aop;
 
 import com.conan.springt.annotation.Auditable;
+import com.conan.springt.introductioninterface.UsageTracked;
+import com.conan.springt.introductioninterface.UsageTrackedImpl;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
@@ -16,7 +18,7 @@ public class ConanAspectWithArgs {
 
     /**
      * @param sss 获取方法传入参数,可以指定运行时环境 传入的具体参数
-     *
+     *            <p>
      *            argNames = "sss" 指定注解方法的参数名 如果有多个 就是 && args(a) && args(b)
      */
     @Before(value = "execution(* com.conan.springt.beans.Bizlogic.save(java.lang.String)) && args(sss))"
@@ -57,7 +59,7 @@ public class ConanAspectWithArgs {
         System.out.println(" executeSaveAfterThrowing " + ex.getStackTrace());
     }
 
-    @Around(value = "execution(* com.conan.springt.beans.Bizlogic.save(java.lang.String))) && args(objects) ")
+    @Around(value = "execution(* com.conan.springt.beans.Bizlogic.save(java.lang.String))) && args(objects)")
     public Object executeSaveAround(ProceedingJoinPoint proceedingJoinPoint) {
 
         Object proceed = null;
@@ -71,6 +73,11 @@ public class ConanAspectWithArgs {
         return proceed;
 
     }
+
+
+    @DeclareParents(value = "com.conan.springt.beans.BizLogicImpl+" // xxxx + 表示对 xxxx 这个类的增强;
+            , defaultImpl = UsageTrackedImpl.class)                 // 增强的默认实现
+    public UsageTracked mixin;
 
 
 }
