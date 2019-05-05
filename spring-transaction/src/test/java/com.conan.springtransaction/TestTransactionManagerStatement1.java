@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 @ContextConfiguration(locations = "classpath:springconfig_statement1.xml")
 public class TestTransactionManagerStatement1 {
 
-    @Resource(name = "accountService")
+    @Resource(name = "transactionProxyFactoryBean")
     private AccountService accountService;
 
     @Test

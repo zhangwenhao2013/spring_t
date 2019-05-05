@@ -154,7 +154,10 @@
                    
                    logging
                    log4j  
-                   aspectj         
+                   aspectj     
+                   
+                   spring aop
+                   aopalliance    
                    
         测试:       spring-test 
                     junit > 4.12   
@@ -200,10 +203,18 @@
   ###### 声明式事务管理
   
   
-  1:
+  1:基于 TransactionProxyFactoryBean 的代理Service方式实现事务管理;
+    
+    1:注册DataSourceTransactionManager ,并注入S3P0连接池;
+    2:注册 基于TransactionProxyFactoryBean增强的Service Bean : target,transactionManager,transactionAttributes;
+    3:<props> <prop>格式
+    PROPAGATION,ISOLATION,readOnly,-Exception,+Exception
+    4:缺点: 每个Service 都需要定义一个增强的 基于TransactionProxyFactoryBean增强的Service
+    
   
+  2:基于AspectJ  xml 配置声明式的事务管理
   
-  2:
+    
   
     
                                     

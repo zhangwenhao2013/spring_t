@@ -23,5 +23,22 @@
         <property name="accountDao" ref="accountDao"/>
     </bean>
 
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="transactionProxyFactoryBean"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <!--配置注入要增强的类-->
+        <property name="target" ref="accountService"/>
+        <!--配置注入transactionManager-->
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="transactionAttributes" >
+            <props >
+                <prop key="transfer">PROPAGATION_REQUIRED,+java.lang.ArithmeticException</prop>
+            </props>
+        </property>
+    </bean>
+
 
 </beans>
