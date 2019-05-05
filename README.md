@@ -219,7 +219,9 @@
     3:定义pointcut 
     4:定义切面
     
+    
     通过基于AspectJ  xml 配置声明式,获取到的Service已经是增强的了;
+    配置好,类上无需任何修改;无侵入性;
     
     
   ```
@@ -248,7 +250,13 @@
     
    3:基于注解方式的声明式事务管理
    
-    1:
+    1:1:注册DataSourceTransactionManager ,并注入S3P0连接池;
+    2:<tx:annotation-driven transaction-manager = "transactionManager">
+    3:在要用的到事务管理的类中使用注解 @Transactional ;
+    
+    配置简单,但是需要在每个用到的地方使用注解,有侵入性;
+    
+   
   
     
   
