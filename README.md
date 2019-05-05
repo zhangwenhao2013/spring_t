@@ -214,6 +214,42 @@
   
   2:基于AspectJ  xml 配置声明式的事务管理
   
+    1:注册DataSourceTransactionManager ,并注入S3P0连接池;
+    2:定义txAdvice,并注入DataSourceTransactionManager,配置传播,隔离信息等
+    3:定义pointcut 
+    4:定义切面
+    
+    通过基于AspectJ  xml 配置声明式,获取到的Service已经是增强的了;
+    
+    
+  ```
+ <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="transfer"
+                       propagation="REQUIRED"
+            />
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="pointcut1"
+                      expression="execution(* com.conan.springtransaction.service.AccountService.transfer(..))"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1"/>
+    </aop:config>
+    
+```
+    
+   3:基于注解方式的声明式事务管理
+   
+    1:
+  
     
   
     
