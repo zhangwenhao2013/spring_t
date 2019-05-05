@@ -131,5 +131,83 @@
     
 ```  
 
+
+
+ ##### Spring 事务管理
+ 
+ ###### 编程式事务管理
+ 
+   1:转账环境的搭建
+        
+        需要的依赖: 
+                   数据库驱动 :mysql driver 
+                   jdbc connection
+                   C3P0 链接池 mchange
+                   
+        Spring : 
+                   Beans
+                   context 
+                   core
+                   expression
+                   loggin
+                   tx 
+                   
+                   logging
+                   log4j  
+                   aspectj         
+                   
+        测试:       spring-test 
+                    junit > 4.12   
+                    
+         配置文件   spring config
+                   jdbc.properties
+                   
+        代码部分:
+            1:注意下 Dao 实现类继承JdbcDaoSupport的这种使用方式;
+            2:注册Service  DAO,并注入DAO 给Service;
+            3:注册S3P0 连接池 并注入数据库的参数信息  驱动,url,username,pwd;
+            4:注入S3P0 连接池给继承了JdbcDaoSupport 的DAO实现类;
+            5:DAO实现类 getJdbcTemplate 获取模板操作数据库; 
+    
+    
+   2: 编程式事务管理   
+        
+        目的:提供TransactionManager
+        1:注意下 Dao 实现类继承JdbcDaoSupport的这种使用方式;
+        2:注册Service  DAO,并注入DAO 给Service;
+        3:注册DataSourceTransactionManager(Mysql),并注入S3P0连接池
+        4:注册TransactionTemplate,并注入注册DataSourceTransactionManager;
+        5:注入注册TransactionTemplate给注册Service;
+        6:在Service实现类中,用TransactionTemplate 管理事务
+        
+ ```
+    private TransactionTemplate transactionTemplate;
+
+    public void transfer(final String out, final String in, final Double money) {
+        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            protected void doInTransactionWithoutResult(TransactionStatus status) {
+                accountDao.inMoney(in, money);
+//                int i = 1 / 0;
+                accountDao.outMoney(out, money);
+            }
+        });
+
+    }
+```
+
+
+
+  ###### 声明式事务管理
+  
+  
+  1:
+  
+  
+  2:
+  
+    
+                                    
+                   
+             
       
     
