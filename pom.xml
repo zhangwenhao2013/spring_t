@@ -6,7 +6,11 @@
 
     <groupId>com.conan</groupId>
     <artifactId>spring_t</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spring-transaction</module>
+    </modules>
 
     <dependencies>
         <dependency>
