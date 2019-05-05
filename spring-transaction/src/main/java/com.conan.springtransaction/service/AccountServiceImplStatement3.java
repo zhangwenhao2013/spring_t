@@ -11,7 +11,7 @@ public class AccountServiceImplStatement3 implements AccountService {
 
     public void transfer(String out, String in, Double money) {
         accountDao.inMoney(in, money);
-        int i = 1 / 0;
+//        int i = 1 / 0;
         accountDao.outMoney(out, money);
     }
 
