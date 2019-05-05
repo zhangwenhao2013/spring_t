@@ -1,4 +1,4 @@
-package com.conan.springtransaction;
+package com.conan.springtransaction.dao;
 
 public interface AccountDao {
 

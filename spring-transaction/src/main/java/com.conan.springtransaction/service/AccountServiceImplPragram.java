@@ -1,5 +1,6 @@
-package com.conan.springtransaction;
+package com.conan.springtransaction.service;
 
+import com.conan.springtransaction.dao.AccountDao;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;

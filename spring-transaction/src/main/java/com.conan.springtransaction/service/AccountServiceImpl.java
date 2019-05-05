@@ -1,4 +1,6 @@
-package com.conan.springtransaction;
+package com.conan.springtransaction.service;
+
+import com.conan.springtransaction.dao.AccountDao;
 
 public class AccountServiceImpl implements AccountService {
 

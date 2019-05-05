@@ -1,5 +1,6 @@
-package com.conan.springtransaction;
+package com.conan.springtransaction.dao;
 
+import com.conan.springtransaction.dao.AccountDao;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 public class AccountDaoImpl extends JdbcDaoSupport implements AccountDao {

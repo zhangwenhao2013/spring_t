@@ -15,11 +15,11 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-    <bean id="accountDao" class="com.conan.springtransaction.AccountDaoImpl">
+    <bean id="accountDao" class="com.conan.springtransaction.dao.AccountDaoImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="accountService" class="com.conan.springtransaction.AccountServiceImplPragram">
+    <bean id="accountService" class="com.conan.springtransaction.service.AccountServiceImplPragram">
         <property name="accountDao" ref="accountDao"/>
         <property name="transactionTemplate" ref="transactionTemplate"/>
     </bean>
