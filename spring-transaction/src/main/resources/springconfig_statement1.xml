@@ -15,22 +15,13 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-    <bean id="accountDao" class="com.conan.springtransaction.dao.AccountDaoImpl">
+    <bean id="accountDao" class="com.conan.springtransaction.dao.AccountDaoImplStatement1">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="accountService" class="com.conan.springtransaction.service.AccountServiceImplPragram">
+    <bean id="accountService" class="com.conan.springtransaction.service.AccountServiceImplStatement1">
         <property name="accountDao" ref="accountDao"/>
-        <property name="transactionTemplate" ref="transactionTemplate"/>
     </bean>
 
-    <!--platformtransactionManager-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-    <!--事务管理模板:Spring 为了简化事务管理的代码提供的类-->
-    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
-        <property name="transactionManager" ref="transactionManager"/>
-    </bean>
 
 </beans>
