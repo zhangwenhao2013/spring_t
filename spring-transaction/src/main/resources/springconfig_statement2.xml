@@ -19,7 +19,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="accountService" class="com.conan.springtransaction.service.AccountServiceImplStatement1">
+    <bean id="accountService" class="com.conan.springtransaction.service.AccountServiceImplStatement2">
         <property name="accountDao" ref="accountDao"/>
     </bean>
 
@@ -27,28 +27,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="transactionProxyFactoryBean"
-          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <!--配置注入要增强的类-->
-        <property name="target" ref="accountService"/>
-        <!--配置注入transactionManager-->
-        <property name="transactionManager" ref="transactionManager"/>
-        <property name="transactionAttributes">
-            <props>
-                <!--key 可以是 instert update transfer -->
-                <!--value 格式
-                PROPAGATION:事务的传播级别
-                ISOLATION :事务的隔离级别
-                readOnly : 只读 (不可以进行 instert  update delete)
-                -Exception  : 发生哪些异常执行回滚
-                +Exception  : 发生哪些异常 不执行回滚
 
-                 <prop key="transfer">PROPAGATION_REQUIRED,+java.lang.ArithmeticException</prop>
-                -->
-                <prop key="transfer">PROPAGATION_REQUIRED</prop>
-            </props>
-        </property>
-    </bean>
 
 
 </beans>
