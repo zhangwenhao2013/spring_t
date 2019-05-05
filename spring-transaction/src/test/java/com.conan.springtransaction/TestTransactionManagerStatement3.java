@@ -9,17 +9,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 
 /**
- * spring 声明式事务管理 方式2
+ * spring 声明式事务管理 方式3
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:springconfig_statement2.xml")
-public class TestTransactionManagerStatement2 {
+@ContextConfiguration(locations = "classpath:springconfig_statement3.xml")
+public class TestTransactionManagerStatement3 {
 
     @Resource(name = "accountService")
     private AccountService accountService;
 
     @Test
-    public void testTransactionManagerStatement2() {
+    public void testTransactionManagerStatement3() {
 
         accountService.transfer("aaa", "bbb", 200d);
 
