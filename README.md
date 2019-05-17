@@ -29,6 +29,8 @@
     1:可以通过参数形式             
     2:可以通过注解形式
     
+     注意 && 后面的形式  &&args(xxx)  和  && @annotation(xxx) 
+    
 ```
 
  /**
@@ -96,6 +98,8 @@
     
     @Around value 用来指定 express
             argNamse 用来指定参数名称;
+            
+             注意 && 后面的形式  &&args(xxx)  和  && @annotation(xxx)  也可以通过这种方式来获取参数
  
 ```
 
